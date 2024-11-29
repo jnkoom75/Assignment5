@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website</title>
+    <style>
+        /* CSS for styling the form */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #333;
+        }
+        label {
+            margin: 10px 0 5px;
+            display: block;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .radio-group {
+            margin-bottom: 15px;
+        }
+        .radio-group label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome</h1>
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" placeholder="Your name" required>
+
+        <div class="radio-group">
+            <label>Choose an option:</label>
+            <label><input type="radio" name="choice" value="option1"> Option 1</label>
+            <label><input type="radio" name="choice" value="option2"> Option 2</label>
+        </div>
+
+        <button class="btn" onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Get the user's name
+            const name = document.getElementById("name").value;
+
+            // Open a new window to display the result
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Submission Result</title>
+                        <style>
+                            body { 
+                                font-family: Arial, sans-serif; 
+                                display: flex; 
+                                justify-content: center; 
+                                align-items: center; 
+                                height: 100vh; 
+                                margin: 0; 
+                                background-color: #f0f2f5; 
+                            }
+                            .message {
+                                text-align: center;
+                                background-color: white;
+                                padding: 20px;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            }
+                            h1 {
+                                color: #333;
+                            }
+                            p {
+                                color: #666;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="message">
+                            <h1>Hello, ${name}!</h1>
+                            <p>This is my HTML, CSS, and JavaScript code.</p>
+                            <p>I am very happy with my first code.</p>
+                        </div>
+                    </body>
+                </html>
+            `);
+            newWindow.document.close();
+        }
+    </script>
+</body>
+</html>
+
